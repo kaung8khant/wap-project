@@ -1,0 +1,80 @@
+/* primary color: 
+ #FA991C (yellow) 
+ #fbf3f2 (white) 
+ #1c768f (blue) 
+ #032539 (dark blue) 
+ #212529 (dark)
+*/
+body {
+  background-color: #212529;
+}
+.navbar {
+  background-color: #032539;
+  padding: 20px;
+}
+.navbar-brand {
+  color: #fff;
+}
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+.btn-primary {
+  background-color: #fa991c;
+  border: none !important;
+}
+.btn-primary:hover {
+  background-color: #b16502 !important;
+  border: none !important;
+}
+.input-group.mb-3 {
+  margin-bottom: 0px !important;
+  margin-right: 20px;
+}
+.input-group.mb-3 input {
+  background-color: #032539;
+  color: white;
+}
+.input-group.mb-3 button {
+  background-color: #fa991c;
+  color: white;
+  border: none;
+}
+.container {
+  padding: 20px;
+}
+.container.first {
+  margin-top: 100px;
+}
+table thead,
+tr {
+  height: 60px;
+  color: white;
+  vertical-align: middle;
+}
+table td {
+  padding: 2px !important;
+}
+table thead tr:hover {
+  cursor: default;
+  background-color: #212529;
+  backdrop-filter: none;
+}
+table tr:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+}
+.title {
+  color: #fbf3f2;
+  font-size: 24px;
+}
+.default-cover {
+  height: 60px;
+  width: 60px;
+}
+.btn-icon {
+  color: white;
+}
