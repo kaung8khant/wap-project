@@ -18,18 +18,24 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./assets/css/index.css" />
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/jsDOM.js"></script>
     <script src="./assets/js/songlist.js"></script>
+    <script src="./assets/js/playlist.js"></script>
+    <script src="./assets/js/player.js"></script>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Sai Kaung Khant</a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form class="d-flex">
+          <div id="search-bar">
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
               <div class="input-group mb-3">
                 <input
+                  id="search-input"
                   type="text"
                   class="form-control"
                   placeholder="Search"
@@ -38,98 +44,90 @@
                 />
                 <button
                   class="btn btn-outline-secondary"
-                  type="button"
+                  type="submit"
                   id="button-addon2"
+                  onclick="search()"
                 >
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </div>
-            </form>
-            <button class="btn btn-primary">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </button>
+
+              <button class="btn btn-primary" onclick="logout()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </button>
+            </div>
+          </div>
+          <div id="login-bar">
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+              <div class="input-group mb-3">
+                <input
+                  id="username-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="button-addon2"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <input
+                  id="password-input"
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  aria-label="Password"
+                  aria-describedby="button-addon2"
+                />
+              </div>
+              <span id="error"></span>
+              <button class="btn btn-primary" onclick="login()">Login</button>
+            </div>
           </div>
         </div>
       </nav>
     </header>
-
-    <article class="container first">
-      <h1 class="title"><i class="fa-solid fa-fire"></i> Popular Song List</h1>
-      <div id="list">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th></th>
-            <th scope="col">Title</th>
-            <th scope="col">Release Date</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="songList">
-          
-        </tbody>
-      </table>
-    </div>
-    </article>
-    <article class="container">
+    <div id="container-body">
+      <article class="container first">
+        <h1 class="title" id="title">
+          <i class="fa-solid fa-fire"></i> Popular Song List
+        </h1>
+        <div id="list">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th></th>
+                <th scope="col">Title</th>
+                <th scope="col">Release Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="songList"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="container">
         <h1 class="title"><i class="fa-solid fa-list"></i> Your Playlist</h1>
         <div id="playlist">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th></th>
-              <th scope="col">Title</th>
-              <th scope="col">Release Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>
-                <img src="./assets/img/default-cover.png" class="default-cover" />
-              </td>
-              <td>Mark</td>
-              <td>4/6/2021</td>
-              <td>
-                <button class="btn btn-icon">
-                    <i class="fa-regular fa-circle-play"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>
-                  <img src="./assets/img/default-cover.png" class="default-cover" />
-                </td>
-                <td>Mark</td>
-                <td>4/6/2021</td>
-                <td>
-                  <button class="btn btn-icon">
-                    <i class="fa-regular fa-circle-play"></i>
-                  </button>
-                </td>
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th></th>
+                <th scope="col">Title</th>
+                <th scope="col">Release Date</th>
+                <th></th>
               </tr>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>
-                  <img src="./assets/img/default-cover.png" class="default-cover" />
-                </td>
-                <td>Mark</td>
-                <td>4/6/2021</td>
-                <td>
-                  <button class="btn btn-icon">
-                    <i class="fa-regular fa-circle-play"></i>
-                  </button>
-                </td>
-              </tr>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody id="playlistBody"></tbody>
+          </table>
+        </div>
       </article>
+      <article class="container" id="player">
+        <div class="player"></div>
+      </article>
+    </div>
   </body>
 </html>

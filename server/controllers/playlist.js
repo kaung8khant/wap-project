@@ -8,9 +8,9 @@ const getPlaylists = (req, res, next) => {
     list.map((item) => {
       let song = Song.fetchByID(item.song_id);
       item["title"] = song.title;
-      item["released_date"] = song.release_date;
+      item["release_date"] = song.release_date;
       item["cover"] = song.cover
-        ? path.join(__dirname, "assets", "img", song.cover)
+        ? path.resolve(__dirname, "..", "assets", "img", song.cover)
         : "default";
       item["file"] = song.file;
       return item;
